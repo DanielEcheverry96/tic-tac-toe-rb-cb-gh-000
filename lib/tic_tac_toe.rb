@@ -60,8 +60,8 @@ def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
-def move(board, index, caracter) #Realiza el movimiento en el tablero
-  board[index] = caracter
+def move(board, index, current_player) #Realiza el movimiento en el tablero
+  board[index] = current_player
 end
 
 def turn(board)
@@ -69,7 +69,7 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
   if valid_move?(board, index)
-    move(board, index)
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
